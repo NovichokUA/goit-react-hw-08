@@ -1,18 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
-import css from "../src/App.module.css";
+import { useEffect } from "react";
+
 import { ContactForm } from "./components/ContactForm/ContactForm";
 import ContactList from "./components/ContactList/ContactList";
 import { SearchBox } from "./components/SearchBox/SearchBox";
-import { useEffect } from "react";
-import { fetchContacts } from "./redux/contactsOps";
 import Loader from "./components/Loader/Loader";
+import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
+
+import { fetchContacts } from "./redux/contacts/operations";
 import {
   selectError,
   selectLoading,
   selectFilteredContacts,
-} from "./redux/contactsSlice";
+} from "./redux/contacts/selectors";
+
 import { Toaster } from "react-hot-toast";
-import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
+import css from "../src/App.module.css";
 
 export function App() {
   const contacts = useSelector(selectFilteredContacts);

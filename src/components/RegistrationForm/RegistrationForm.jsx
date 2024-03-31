@@ -1,5 +1,8 @@
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+// import { useId } from "react";
+import { useDispatch } from "react-redux";
 import * as Yup from "yup";
+import { register } from "../../redux/auth/operations";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -22,6 +25,8 @@ const validationSchema = Yup.object().shape({
 });
 
 const RegistrationForm = () => {
+  const dispatch = useDispatch();
+
   return (
     <Formik
       initialValues={{
@@ -31,17 +36,32 @@ const RegistrationForm = () => {
       }}
       validationSchema={validationSchema}
       onSubmit={(values, actions) => {
-        console.log(values);
+        dispatch(register(values));
         actions.resetForm();
       }}
     >
-      <Form>
-        <label htmlFor="name">Name</label>
-        <Field name="name" />
-        <label htmlFor="email">Email</label>
-        <Field name="email" />
-        <label htmlFor="password">Password</label>
-        <Field name="password" />
+      <Form autoComplete="off">
+        <label>
+          Name
+          <Field name="name" placeholder="For exemple Valerii" />
+        </label>
+        <span>
+          <ErrorMessage name="name" />
+        </span>
+        <label>
+          Email
+          <Field type="email" name="email" placeholder="exemple@mail.com" />
+        </label>
+        <span>
+          <ErrorMessage name="email" />
+        </span>
+        <label>
+          Password
+          <Field type="password" name="password" placeholder="123456@jds" />
+        </label>
+        <span>
+          <ErrorMessage name="password" />
+        </span>
         <button type="submit">Registration</button>
       </Form>
     </Formik>

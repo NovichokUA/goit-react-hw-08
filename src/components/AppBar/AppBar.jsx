@@ -1,13 +1,22 @@
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import AuthNav from "../AuthNav/AuthNav";
+import UserMenu from "../UserMenu/UserMenu";
+import { useSelector } from "react-redux";
+import {
+  selectIsLoggedIn,
+  selectIsRefreshing,
+} from "../../redux/auth/selectors";
+import { Navigation } from "../Navigation/Navigation";
 
 const AppBar = () => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isRefreshing = useSelector(selectIsRefreshing);
+
   return (
-    <div>
-      Hello AppBar
-      <NavLink to={"/"}>Home</NavLink>
-      <AuthNav />
-    </div>
+    <header>
+      <Navigation />
+      {!isRefreshing && <div>{isLoggedIn ? <UserMenu /> : <AuthNav />} </div>}
+    </header>
   );
 };
 

@@ -6,6 +6,8 @@ import { selectFilteredContacts } from "../../redux/contacts/selectors";
 import { useEffect } from "react";
 import { fetchContacts } from "../../redux/contacts/operations";
 
+import css from "./Contacts.module.css";
+
 const Contacts = () => {
   const contacts = useSelector(selectFilteredContacts);
   const dispatch = useDispatch();
@@ -14,7 +16,7 @@ const Contacts = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className={css.mainContainer}>
       <ContactForm />
       <SearchBox />
       {contacts.length > 0 && <ContactList />}

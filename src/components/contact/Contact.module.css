@@ -4,6 +4,14 @@
     margin-right: 8px;
 }
 
+.title {
+    font-family: "Montserrat";
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 16px;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -23,6 +31,7 @@
 }
 
 .maincontainer {
+    border-radius: 4px;
     border: 1px solid black;
     display: flex;
     width: 260px;

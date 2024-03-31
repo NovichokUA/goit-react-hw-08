@@ -9,7 +9,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: 580px;
+  /* max-width: 580px; */
+  height: 100vw;
   margin: 0 auto;
   background-color: bisque;
   border: 1px solid rgba(0, 0, 0, 0.63);
@@ -18,6 +19,14 @@
 }
 
 .title {
+  padding: 40px 0 0 0;
   max-width: 300px;
   margin: 0 auto;
+  font-family: "Montserrat";
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  text-shadow: 1px 2px 2px #766e6e;
+  text-align: center;
+  font-size: 40px;
 }

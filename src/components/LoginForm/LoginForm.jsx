@@ -7,6 +7,8 @@ import * as Yup from "yup";
 
 import css from "./LoginForm.module.css";
 
+import { IoLogIn } from "react-icons/io5";
+
 import { Box } from "@mui/material";
 import { Button, TextField, Stack } from "@mui/material";
 
@@ -62,20 +64,38 @@ const LoginForm = () => {
                 helperText="Please enter your email."
               />
             </label>
-            <span>
+            <span className={css.message}>
               <ErrorMessage name="email" />
             </span>
           </div>
           <div className={css.fieldContainer}>
             <label className={css.label}>
-              Password
-              <Field name="password" />
+              <Field
+                as={TextField}
+                label="Password"
+                type="password"
+                name="password"
+                fullWidth
+                variant="outlined"
+                margin="dense"
+                helperText="Please enter your Password."
+              />
             </label>
-            <span>
+            <span className={css.message}>
               <ErrorMessage name="password" />
             </span>
           </div>
-          <button type="submit">Log In</button>
+          <Stack direction="row" spacing={2}>
+            <Button
+              type="submit"
+              variant="contained"
+              color="inherit"
+              startIcon={<IoLogIn />}
+              size="small"
+            >
+              Log In
+            </Button>
+          </Stack>
         </Form>
       </Formik>
     </Box>

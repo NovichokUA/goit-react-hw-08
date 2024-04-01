@@ -1,12 +1,15 @@
-// import { addContact } from "../../redux/contactsSlice";
 import { addContact } from "../../redux/contacts/operations";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import { useId } from "react";
 import { Formik, ErrorMessage, Field, Form } from "formik";
 
 import css from "./ContactForm.module.css";
-import { FaUserPlus, FaPhone, FaUser } from "react-icons/fa6";
+
+import { Box, TextField, Button, Stack } from "@mui/material";
+import InputAdornment from "@mui/material/InputAdornment";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import PhoneIcon from "@mui/icons-material/Phone";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
 
 const ContactShema = Yup.object().shape({
   name: Yup.string()
@@ -25,43 +28,91 @@ const ContactShema = Yup.object().shape({
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const nameId = useId();
-  const numberId = useId();
 
   return (
-    <Formik
-      initialValues={{
-        name: "",
-        number: "",
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        "& > :not(style)": { m: 1 },
+        width: "580px",
       }}
-      validationSchema={ContactShema}
-      onSubmit={(values, actions) => {
-        dispatch(addContact({ ...values }));
-        actions.resetForm();
-      }}
+      autoComplete="off"
     >
-      <Form className={css.form}>
-        <div className={css.labelName}>
-          <label htmlFor={nameId}>Name</label>
-          <Field className={css.field} name="name" id={nameId} />
-          <FaUser className={css.icon} />
-          <span className={css.message}>
-            <ErrorMessage name="name" />
-          </span>
-        </div>
-        <div className={css.labelNumber}>
-          <label htmlFor={numberId}>Number</label>
-          <Field className={css.field} name="number" id={numberId} />
-          <FaPhone className={css.icon} />
-          <span className={css.message}>
-            <ErrorMessage name="number" />
-          </span>
-        </div>
-        <button className={css.btn} type="submit">
-          <FaUserPlus />
-          Add Contact
-        </button>
-      </Form>
-    </Formik>
+      <Formik
+        initialValues={{
+          name: "",
+          number: "",
+        }}
+        validationSchema={ContactShema}
+        onSubmit={(values, actions) => {
+          dispatch(addContact({ ...values }));
+          actions.resetForm();
+        }}
+      >
+        <Form className={css.form}>
+          <div className={css.container}>
+            <label className={css.label}>
+              <Field
+                as={TextField}
+                label="Name"
+                type="name"
+                name="name"
+                fullWidth
+                variant="outlined"
+                margin="dense"
+                helperText="Please enter new name."
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <AccountCircle />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </label>
+
+            <span className={css.message}>
+              <ErrorMessage name="name" />
+            </span>
+          </div>
+          <div className={css.container}>
+            <label className={css.label}>
+              <Field
+                as={TextField}
+                label="Number"
+                name="number"
+                fullWidth
+                variant="outlined"
+                margin="dense"
+                helperText="Please enter new number."
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <PhoneIcon />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </label>
+
+            <span className={css.message}>
+              <ErrorMessage name="number" />
+            </span>
+          </div>
+          <Stack direction="row" spacing={2}>
+            <Button
+              type="submit"
+              variant="contained"
+              color="inherit"
+              startIcon={<PersonAddIcon />}
+              size="small"
+            >
+              Add Contact
+            </Button>
+          </Stack>
+        </Form>
+      </Formik>
+    </Box>
   );
 };

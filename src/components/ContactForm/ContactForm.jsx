@@ -11,6 +11,8 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import PhoneIcon from "@mui/icons-material/Phone";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 
+import toast from "react-hot-toast";
+
 const ContactShema = Yup.object().shape({
   name: Yup.string()
     .trim()
@@ -46,7 +48,11 @@ export const ContactForm = () => {
         }}
         validationSchema={ContactShema}
         onSubmit={(values, actions) => {
-          dispatch(addContact({ ...values }));
+          dispatch(addContact({ ...values }))
+            .unwrap()
+            .then(() => {
+              toast.success("The operation is successful. I congratulate you.");
+            });
           actions.resetForm();
         }}
       >

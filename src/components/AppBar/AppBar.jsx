@@ -20,7 +20,7 @@ const AppBaR = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
 
   return (
-    <AppBar position="static" width="100vw">
+    <AppBar position="static" sx={{ width: "100vw" }}>
       <Toolbar
         sx={{
           display: "flex",

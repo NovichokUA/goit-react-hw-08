@@ -106,23 +106,6 @@ export const Contact = ({ user: { id, name, number } }) => {
                 </Stack>
               </DialogActions>
             </Dialog>
-            {/* <Stack direction="row" spacing={2}>
-              <Button
-                onClick={() =>
-                  dispatch(deleteContact(id))
-                    .unwrap()
-                    .then(() => {
-                      toast.success("The operation is successful.");
-                    })
-                }
-                variant="contained"
-                color="inherit"
-                startIcon={<DeleteIcon />}
-                size="small"
-              >
-                Delete
-              </Button>
-            </Stack> */}
           </CardActions>
         </Card>
       </Box>

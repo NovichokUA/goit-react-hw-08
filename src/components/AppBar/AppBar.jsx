@@ -1,4 +1,3 @@
-// import { NavLink } from "react-router-dom";
 import AuthNav from "../AuthNav/AuthNav";
 import UserMenu from "../UserMenu/UserMenu";
 import { useSelector } from "react-redux";
@@ -11,9 +10,6 @@ import { Navigation } from "../Navigation/Navigation";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-// import IconButton from "@mui/material/IconButton";
-// import MenuIcon from "@mui/icons-material/Menu";
-// import { Button, Stack } from "@mui/material";
 
 const AppBaR = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);

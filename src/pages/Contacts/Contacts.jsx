@@ -6,7 +6,16 @@ import { selectFilteredContacts } from "../../redux/contacts/selectors";
 import { useEffect } from "react";
 import { fetchContacts } from "../../redux/contacts/operations";
 
+import { styled } from "@mui/material/styles";
+
 import css from "./Contacts.module.css";
+import { Box } from "@mui/material";
+
+const Image = styled("img")({
+  maxWidth: "100%",
+  height: "auto",
+  borderRadius: 8,
+});
 
 const Contacts = () => {
   const contacts = useSelector(selectFilteredContacts);
@@ -16,11 +25,19 @@ const Contacts = () => {
   }, [dispatch]);
 
   return (
-    <div className={css.mainContainer}>
-      <ContactForm />
-      <SearchBox />
-      {contacts.length > 0 && <ContactList />}
-    </div>
+    <Box sx={{ display: "flex" }}>
+      <div className={css.mainContainer}>
+        <ContactForm />
+        <SearchBox />
+        {contacts.length > 0 && <ContactList />}
+      </div>
+      <div>
+        <Image
+          src="https://cdn.pixabay.com/photo/2016/12/19/08/39/mobile-phone-1917737_1280.jpg"
+          alt="phone"
+        />
+      </div>
+    </Box>
   );
 };
 export default Contacts;

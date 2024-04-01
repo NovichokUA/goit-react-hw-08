@@ -18,7 +18,7 @@ const theme = createTheme({
 const Image = styled("img")({
   maxWidth: "50%",
   height: "auto",
-  borderRadius: 8, // скругление углов
+  borderRadius: 8,
 });
 
 const Home = () => {
@@ -41,7 +41,7 @@ const Home = () => {
       </Box>
       <Image
         src="https://cdn.pixabay.com/photo/2014/10/23/16/58/phone-499991_1280.jpg"
-        alt="Описание изображения"
+        alt="phone"
       />
     </Box>
   );

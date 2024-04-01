@@ -29,13 +29,13 @@ export const SearchBox = () => {
             onChange={(e) => {
               dispatch(changeFilter(e.target.value));
             }}
-            label="Find contacts by name"
+            label="Find contacts by name or number"
             type="text"
             name="name"
             fullWidth
             variant="outlined"
             margin="dense"
-            helperText="Find contacts by name."
+            helperText="Find contacts by name or number."
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">

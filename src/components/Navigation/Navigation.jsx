@@ -7,6 +7,7 @@ export const Navigation = () => {
 
   return (
     <nav>
+      {/* <Button color="inherit">Вход</Button> */}
       <NavLink to="/">Home</NavLink>
       {isLoggedIn && <NavLink to="/contacts">Contacts</NavLink>}
     </nav>

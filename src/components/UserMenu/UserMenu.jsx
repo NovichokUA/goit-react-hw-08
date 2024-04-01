@@ -14,7 +14,7 @@ const UserMenu = () => {
   return (
     <div>
       <p className={css.title}>Hello, {name}</p>
-      <Stack direction="row" spacing={2}>
+      <Stack direction="row" spacing={2} color="#616161">
         <Button
           onClick={() => dispatch(logOut())}
           type="button"

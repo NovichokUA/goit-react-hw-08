@@ -58,27 +58,6 @@ export const Contact = ({ user: { id, name, number } }) => {
           </CardActions>
         </Card>
       </Box>
-      {/* <div className={css.container}>
-        <p className={css.title}>
-          <FaUser className={css.icon} />
-          {name}
-        </p>
-        <p className={css.title}>
-          <FaPhone className={css.icon} />
-          {number}
-        </p>
-      </div>
-      <Stack direction="row" spacing={2}>
-        <Button
-          onClick={() => dispatch(deleteContact(id))}
-          variant="contained"
-          color="inherit"
-          startIcon={<FaUserMinus fontSize="small" />}
-          size="small"
-        >
-          Delete
-        </Button>
-      </Stack> */}
     </div>
   );
 };

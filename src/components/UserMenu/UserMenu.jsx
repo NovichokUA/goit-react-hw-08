@@ -5,13 +5,15 @@ import { logOut } from "../../redux/auth/operations";
 import { Button, Stack } from "@mui/material";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
+import css from "./UserMenu.module.css";
+
 const UserMenu = () => {
   const { name } = useSelector(selectUser);
   const dispatch = useDispatch();
 
   return (
     <div>
-      <p>Hello, {name}</p>
+      <p className={css.title}>Hello, {name}</p>
       <Stack direction="row" spacing={2}>
         <Button
           onClick={() => dispatch(logOut())}

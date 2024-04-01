@@ -1,29 +1,51 @@
-import { useId } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeFilter, selectNameFilter } from "../../redux/filters/slice";
 
 import css from "./SearchBox.module.css";
-import { FaSistrix } from "react-icons/fa6";
+
+import { Box, TextField } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import InputAdornment from "@mui/material/InputAdornment";
 
 export const SearchBox = () => {
   const value = useSelector(selectNameFilter);
 
   const dispatch = useDispatch();
-  const id = useId();
+
   return (
     <div className={css.container}>
-      <label htmlFor={id}>Find contacts by name</label>
-
-      <input
-        className={css.input}
-        id={id}
-        type="text"
-        value={value}
-        onChange={(e) => {
-          dispatch(changeFilter(e.target.value));
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          "& > :not(style)": { m: 1 },
+          width: "580px",
         }}
-      />
-      <FaSistrix className={css.icon} />
+        autoComplete="off"
+      >
+        <label className={css.label}>
+          <TextField
+            value={value}
+            onChange={(e) => {
+              dispatch(changeFilter(e.target.value));
+            }}
+            label="Find contacts by name"
+            type="text"
+            name="name"
+            fullWidth
+            variant="outlined"
+            margin="dense"
+            helperText="Find contacts by name."
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
+          />
+        </label>
+      </Box>
     </div>
   );
 };

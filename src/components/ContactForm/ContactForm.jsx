@@ -35,7 +35,7 @@ export const ContactForm = () => {
         display: "flex",
         alignItems: "center",
         "& > :not(style)": { m: 1 },
-        width: "580px",
+        width: "100%",
       }}
       autoComplete="off"
     >

@@ -6,6 +6,7 @@ import css from "./RegistrationForm.module.css";
 import * as Yup from "yup";
 import { Box, Button, TextField, Stack } from "@mui/material";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
+import toast from "react-hot-toast";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -47,7 +48,16 @@ const RegistrationForm = () => {
         }}
         validationSchema={validationSchema}
         onSubmit={(values, actions) => {
-          dispatch(register(values));
+          dispatch(register(values))
+            .unwrap()
+            .then(() => {
+              toast.success(
+                "Congratulations. You have successfully registered. Enjoy!"
+              );
+            })
+            .catch(() => {
+              toast.error("Please check the entered data.");
+            });
           actions.resetForm();
         }}
       >

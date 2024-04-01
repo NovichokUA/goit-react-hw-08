@@ -6,6 +6,7 @@ import { Button, Stack } from "@mui/material";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
 import css from "./UserMenu.module.css";
+import toast from "react-hot-toast";
 
 const UserMenu = () => {
   const { name } = useSelector(selectUser);
@@ -16,7 +17,13 @@ const UserMenu = () => {
       <p className={css.title}>Hello, {name}</p>
       <Stack direction="row" spacing={2} color="#616161">
         <Button
-          onClick={() => dispatch(logOut())}
+          onClick={() =>
+            dispatch(logOut())
+              .unwrap()
+              .then(() => {
+                toast.success("Good luck. We are waiting for you later!");
+              })
+          }
           type="button"
           variant="contained"
           color="inherit"

@@ -11,6 +11,7 @@ import { IoLogIn } from "react-icons/io5";
 
 import { Box } from "@mui/material";
 import { Button, TextField, Stack } from "@mui/material";
+import toast from "react-hot-toast";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -46,7 +47,11 @@ const LoginForm = () => {
         }}
         validationSchema={validationSchema}
         onSubmit={(value, actions) => {
-          dispatch(logIn(value));
+          dispatch(logIn(value))
+            .unwrap()
+            .catch(() => {
+              toast.error("Check that the data entered is correct.");
+            });
           actions.resetForm();
         }}
       >

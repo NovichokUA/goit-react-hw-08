@@ -3,11 +3,11 @@ import { Route, Routes } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { selectError, selectLoading } from "../redux/contacts/selectors";
-import Loyout from "./Layout";
+import Layout from "./Layout";
 import { refreshUser } from "../redux/auth/operations";
 import { selectIsRefreshing } from "../redux/auth/selectors";
 import { RestrictedRoute } from "./RestrictedRoute";
-import { PrivatRoute } from "./PrivateRoute";
+import { PrivateRoute } from "./PrivateRoute";
 
 import { Toaster } from "react-hot-toast";
 
@@ -32,7 +32,7 @@ export function App() {
 
   return (
     <div className={css.mainContainer}>
-      <Loyout>
+      <Layout>
         <h1 className={css.title}>Phonebook</h1>
         {isRefreshing ? (
           <Loader />
@@ -50,12 +50,12 @@ export function App() {
               />
               <Route
                 path="/contacts"
-                element={<PrivatRoute component={<Contacts />} />}
+                element={<PrivateRoute component={<Contacts />} />}
               />
             </Routes>
           </Suspense>
         )}
-      </Loyout>
+      </Layout>
 
       {loading && <Loader>Loading Message</Loader>}
       {error && <ErrorMessage message={error} />}

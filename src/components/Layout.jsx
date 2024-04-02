@@ -1,12 +1,12 @@
-import AppBar from "./AppBar/AppBar";
+import AppBaR from "./AppBar/AppBar";
 
-const Loyout = ({ children }) => {
+const Layout = ({ children }) => {
   return (
     <div>
-      {<AppBar />}
+      {<AppBaR />}
       {children}
     </div>
   );
 };
 
-export default Loyout;
+export default Layout;
